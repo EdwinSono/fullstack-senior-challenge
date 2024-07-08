@@ -1,9 +1,9 @@
 # Kambista Fullstack Senior!
 
 👋 Somos [Kambista](https://kambista.com) y estamos en la búsqueda de un nuevo miembro
-para nuestro equipo de tech que nos ayude a seguir ofreciendo la mejor experiencia de 
-cambio, para esto hemos preparado un reto técnico el cual pueden completar y enviarnos 
-el resultado con las instrucciones instruciones de entrega
+para nuestro equipo de tech que nos ayude a seguir ofreciendo la mejor experiencia de
+cambio, para esto hemos preparado un reto técnico el cual pueden completar y enviarnos
+el resultado con las instrucciones de entrega
 
 ## 📓 Caso
 Se necesita crear una API interna que registre las solicitudes de cambio de moneda de los clientes.
@@ -110,3 +110,63 @@ Para el desarrollo de la solución se debe utilizar las siguientes tecnologías:
 - El tiempo estimado para completar la prueba es de 7 días desde el inicio de la misma.
 
 Quedamos atentos a cualquier consulta adicional, muchos éxitos! 🚀
+
+# App
+
+### Test local
+```sh
+# READ TRASANCTIONS
+curl --location 'http://localhost:3000/transactions?fechaInicio=2024-07-01&fechaFinal=2024-07-30'
+
+# CHANGE CURRENCY
+curl --location 'http://localhost:3000/transactions/change-currency' \
+--header 'Content-Type: application/json' \
+--data '{
+  "monedaOrigen": "PEN",
+  "monedaDestino": "USD",
+  "monto": 100
+}
+'
+```
+
+### Test Server
+```sh
+# READ TRASANCTIONS
+curl --location 'https://5ma4a4rip8.execute-api.us-east-1.amazonaws.com/transactions?fechaInicio=2024-07-01&fechaFinal=2024-07-30'
+
+# CHANGE CURRENCY
+curl --location 'https://5ma4a4rip8.execute-api.us-east-1.amazonaws.com/transactions/change-currency' \
+--header 'Content-Type: application/json' \
+--data '{
+  "monedaOrigen": "PEN",
+  "monedaDestino": "USD",
+  "monto": 100
+}
+'
+```
+
+### Run test
+
+```sh
+npm run test
+```
+
+### Run Local
+
+```sh
+serverless offline start
+```
+
+### Deployment
+
+Install dependencies with:
+
+```sh
+npm install
+```
+
+and then deploy with:
+
+```sh
+serverless deploy
+```
