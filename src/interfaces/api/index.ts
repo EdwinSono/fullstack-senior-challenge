@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 api.use(express.json());
 
 api.get("/", (req: Request, res: Response, next: NextFunction) => {
-  return res.status(200).send("API REST: Kambista v 1.0");
+  return res.status(200).send("API REST: Kambista v1.0");
 });
 
 api.use("/transactions", transactionRoute);
