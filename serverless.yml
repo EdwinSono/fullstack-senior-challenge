@@ -1,0 +1,44 @@
+org: winso
+app: kambista-api
+service: kambista
+frameworkVersion: "3"
+custom:
+  documentation:
+    version: "1"
+    title: kambista API
+    description: kambista API
+    servers:
+      url: https://localhost:{port}/
+      description: kambista API
+      variables:
+        port:
+          enum:
+            - "3000"
+          default: "3000"
+          description: The port the server operates on
+  serverless-offline:
+    noPrependStageInUrl: true
+    useChildProcesses: false
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+    target: node18
+    exclude: []
+    watch:
+      pattern: src/**/*.ts
+      ignore: .serverless/**/*
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    PORT: 3000
+    URLDB: mongodb+srv://edwin:edwin@grupo.wrvtyyh.mongodb.net/?retryWrites=true&w=majority&appName=grupo
+functions:
+  api:
+    handler: src/index.handler
+    events:
+      - httpApi: "*"
+plugins:
+  - serverless-esbuild
+  - serverless-offline
