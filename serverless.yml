@@ -34,6 +34,8 @@ provider:
   environment:
     PORT: 3000
     URLDB: mongodb+srv://edwin:edwin@grupo.wrvtyyh.mongodb.net/?retryWrites=true&w=majority&appName=grupo
+  httpApi:
+    cors: true
 functions:
   api:
     handler: src/index.handler
